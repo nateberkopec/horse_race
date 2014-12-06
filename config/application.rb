@@ -1,6 +1,13 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+ActiveSupport::Logger.class_eval do
+  #monkey patching here so there aren't duplicate lines in console/server
+  def self.broadcast(logger)
+    Module.new do
+    end
+  end
+end
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -23,6 +30,8 @@ module HorseRace
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+    #JRuby is currently eating schema.rb
     config.active_record.schema_format = :sql
+
   end
 end
