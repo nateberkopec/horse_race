@@ -1,1 +1,1 @@
-web: bundle exec rails server torquebox
+web: bundle exec rails server torquebox -p $PORT
