@@ -2,6 +2,14 @@ class Race < ActiveRecord::Base
   before_save :create_code
   has_many :horses
 
+  def finished?
+    horses.any? {|h| h.position >= self.length}
+  end
+
+  def winner
+    horses.max { |a, b| a.position <=> b.position }
+  end
+
   private
 
   def create_code

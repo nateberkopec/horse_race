@@ -3,9 +3,11 @@ class CreateHorses < ActiveRecord::Migration
     create_table :horses do |t|
       t.string :name
       t.integer :position
+      t.integer :race_id
 
-      t.references :race
       t.timestamps null: false
     end
+
+    add_index :horses, :race_id
   end
 end

@@ -35,7 +35,8 @@ SET default_with_oids = false;
 CREATE TABLE horses (
     id integer NOT NULL,
     name character varying(255),
-    "position" integer,
+    "position" integer DEFAULT 0,
+    race_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -132,6 +133,13 @@ ALTER TABLE ONLY races
 
 
 --
+-- Name: index_horses_on_race_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_horses_on_race_id ON horses USING btree (race_id);
+
+
+--
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -147,4 +155,6 @@ SET search_path TO "$user",public;
 INSERT INTO schema_migrations (version) VALUES ('20141206200236');
 
 INSERT INTO schema_migrations (version) VALUES ('20141206200408');
+
+INSERT INTO schema_migrations (version) VALUES ('20141206211910');
 
