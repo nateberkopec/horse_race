@@ -1,1 +1,25 @@
-Hello world
+<div class='row text-center'>
+  <div class="col-md-12">
+    <h1>HORSE RACE!<h1>
+  </div>
+</div>
+
+<div class='row'>
+  <div class="col-md-12">
+
+    <%= form_for @horse, html: {class: 'form'} do |f| %>
+      <div class="form-group">
+        <%= f.label :race_code %>
+        <%= f.text_field :race_code, class: 'form-control', placeholder: 'Enter race code or leave blank to create a new race' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control', placeholder: 'Enter your horse\'s name or leave blank to auto-generate' %>
+      </div>
+
+      <%= f.submit 'Join Race', class: 'btn btn-primary btn-block btn-lg' %>
+    <% end %>
+
+  </div>
+</div>
