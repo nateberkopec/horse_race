@@ -4,3 +4,7 @@ rvm:
   - jruby-19mode
 
 sudo: false
+
+before_install:
+  - rake db:create
+  - rake db:structure:load
