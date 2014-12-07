@@ -9,8 +9,7 @@ class RaceTest < ActiveSupport::TestCase
     )
   end
 
-  test 'setting up a new race' do
-    assert @race.save
+  test 'setting up a new race generates a code' do
     assert @race.code
   end
 
