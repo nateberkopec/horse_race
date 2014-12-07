@@ -5,6 +5,6 @@ rvm:
 
 sudo: false
 
-before_install:
+before_script:
   - rake db:create
   - rake db:structure:load
