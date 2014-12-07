@@ -1,12 +1,4 @@
 class HorsesController < ApplicationController
-  before_action :set_horse, only: [:show, :edit, :update, :destroy]
-
-  # GET /horses
-  # GET /horses.json
-  def index
-    @horses = Horse.all
-  end
-
   # GET /horses/new
   def new
     @horse = Horse.new
@@ -31,6 +23,8 @@ class HorsesController < ApplicationController
   # PATCH/PUT /horses/1
   # PATCH/PUT /horses/1.json
   def update
+    @horse = Horse.find(params[:id])
+
     respond_to do |format|
       if @horse.update(horse_params)
         format.html { redirect_to @horse, notice: 'Horse was successfully updated.' }
@@ -43,11 +37,6 @@ class HorsesController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_horse
-    @horse = Horse.find(params[:id])
-  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def horse_params
