@@ -68,7 +68,7 @@ ALTER SEQUENCE horses_id_seq OWNED BY horses.id;
 CREATE TABLE races (
     id integer NOT NULL,
     code character varying(255),
-    length integer,
+    length integer DEFAULT 100,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -157,4 +157,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141206200236');
 INSERT INTO schema_migrations (version) VALUES ('20141206200408');
 
 INSERT INTO schema_migrations (version) VALUES ('20141206211910');
+
+INSERT INTO schema_migrations (version) VALUES ('20141207234617');
 
