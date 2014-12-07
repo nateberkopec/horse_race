@@ -1,4 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_race_path(@race) %> |
-<%= link_to 'Back', races_path %>
+<h1>Race!</h1>
+
+<p>
+  <strong>Length:</strong>
+  <%= @race.length %>
+</p>
+
+<h3>Horses:</h3>
+
+<ul>
+  <% @race.horses.each do |horse| %>
+    <li><%= horse.name %>:</li>
+  <% end %>
+</ul>
