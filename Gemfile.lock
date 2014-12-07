@@ -60,6 +60,7 @@ GEM
       activesupport (>= 4.1.0)
     hike (1.2.3)
     i18n (0.7.0.beta1)
+    interception (0.5)
     jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -83,6 +84,9 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
       spoon (~> 0.0)
+    pry-rescue (1.4.1)
+      interception (>= 0.5)
+      pry
     rack (1.6.0.beta2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -170,6 +174,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pry
+  pry-rescue
   rails (= 4.2.0.rc1)
   rails_12factor
   sass-rails (~> 4.0)
