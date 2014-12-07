@@ -3,7 +3,5 @@ Rails.application.routes.draw do
 
   resources :races
 
-  root 'home#index'
-
-
+  root 'horses#new'
 end

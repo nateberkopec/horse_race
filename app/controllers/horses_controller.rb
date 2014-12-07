@@ -7,18 +7,9 @@ class HorsesController < ApplicationController
     @horses = Horse.all
   end
 
-  # GET /horses/1
-  # GET /horses/1.json
-  def show
-  end
-
   # GET /horses/new
   def new
     @horse = Horse.new
-  end
-
-  # GET /horses/1/edit
-  def edit
   end
 
   # POST /horses
@@ -28,7 +19,7 @@ class HorsesController < ApplicationController
 
     respond_to do |format|
       if @horse.save
-        format.html { redirect_to @horse, notice: 'Horse was successfully created.' }
+        format.html { redirect_to @horse.race }
         format.json { render :show, status: :created, location: @horse }
       else
         format.html { render :new }
@@ -51,24 +42,15 @@ class HorsesController < ApplicationController
     end
   end
 
-  # DELETE /horses/1
-  # DELETE /horses/1.json
-  def destroy
-    @horse.destroy
-    respond_to do |format|
-      format.html { redirect_to horses_url, notice: 'Horse was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_horse
+    @horse = Horse.find(params[:id])
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_horse
-      @horse = Horse.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def horse_params
-      params.require(:horse).permit(:name, :race_code)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def horse_params
+    params.require(:horse).permit(:name, :race_code)
+  end
 end
