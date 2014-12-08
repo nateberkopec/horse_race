@@ -2,6 +2,8 @@ class Horse < ActiveRecord::Base
   belongs_to :race
   attr_accessor :race_code
 
+  NAMES = YAML.load_file('lib/horse_names.yml')
+
   validates :name, presence: true
   validate :no_shortcuts, if: proc { |h| h.position_changed? }
 
@@ -21,5 +23,9 @@ class Horse < ActiveRecord::Base
 
   def creates_race_if_none_exists
     self.race ||= Race.create
+  end
+
+  def assigns_name_if_none_exists
+    self.name ||= NAMES.sample
   end
 end

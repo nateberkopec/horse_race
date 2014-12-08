@@ -15,7 +15,7 @@
 
       <div class="form-group">
         <%= f.label :name %>
-        <%= f.text_field :name, class: 'form-control', placeholder: 'Enter your horse\'s name or leave blank to auto-generate' %>
+        <%= f.text_field :name, class: 'form-control', placeholder: "e.g. \"#{Horse::NAMES.sample}\" or leave blank to auto-generate" %>
       </div>
 
       <%= f.submit 'Join Race', class: 'btn btn-primary btn-block btn-lg' %>
