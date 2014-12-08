@@ -28,10 +28,10 @@ class HorsesController < ApplicationController
 
     respond_to do |format|
       if @horse.update(horse_params)
-        format.html { redirect_to @horse, notice: 'Horse was successfully updated.' }
+        format.html { redirect_to @horse.race }
         format.json { render :show, status: :ok, location: @horse }
       else
-        format.html { render :edit }
+        format.html { redirect_to @horse.race }
         format.json { render json: @horse.errors, status: :unprocessable_entity }
       end
     end
@@ -41,7 +41,6 @@ class HorsesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def horse_params
-    params[:horse].delete_if {|k,v| v.blank?}
-    params.permit(:name, :race_code)
+    params[:horse].permit(:name, :race_code, :position).delete_if {|k,v| v.blank?}
   end
 end

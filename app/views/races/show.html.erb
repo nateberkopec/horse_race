@@ -12,10 +12,17 @@
 <ul>
   <% @race.horses.each do |horse| %>
     <li>
-      <% if horse.id == session[:horse_id] %>
+      <% if horse == current_horse %>
         <span class="badge"> You </span>
       <% end %>
       <%= horse.name %>: <%= horse.position %> / <%= @race.length %>
     </li>
   <% end %>
 </ul>
+
+<% if current_horse %>
+  <%= form_for current_horse do |f| %>
+    <%= f.hidden_field :position, value: current_horse.position + 1 %>
+    <%= f.submit "Giddyup!", class: 'btn btn-lg btn-block btn-success' %>
+  <% end %>
+<% end %>

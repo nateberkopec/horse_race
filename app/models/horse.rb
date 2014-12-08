@@ -16,7 +16,7 @@ class Horse < ActiveRecord::Base
   private
 
   def no_shortcuts
-    unless (-1..1) === (position - position_was)
+    unless (-1..1) === (position.to_i - position_was)
       errors.add(:position, 'cannot be increased by more than 1')
     end
   end
