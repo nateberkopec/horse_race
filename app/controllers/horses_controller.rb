@@ -8,9 +8,9 @@ class HorsesController < ApplicationController
   # POST /horses.json
   def create
     @horse = Horse.new(horse_params)
+
     respond_to do |format|
       if @horse.save
-        @horse.reload
         format.html { redirect_to race_url(@horse.race.id) }
         format.json { render :show, status: :created, location: @horse }
       else
@@ -41,6 +41,6 @@ class HorsesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def horse_params
     params[:horse].delete_if {|k,v| v.blank?}
-    params.require(:horse).permit(:name, :race_code)
+    params.permit(:name, :race_code)
   end
 end
