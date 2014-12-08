@@ -4,10 +4,10 @@ class Horse < ActiveRecord::Base
 
   NAMES = YAML.load_file('lib/horse_names.yml')
 
-  validates :name, presence: true
   validate :no_shortcuts, if: proc { |h| h.position_changed? }
 
   before_save :creates_race_if_none_exists
+  before_save :assigns_name_if_none_exists
 
   def race_code=(code)
     self.race = Race.find_or_initialize_by code: code
