@@ -11,6 +11,11 @@
 
 <ul>
   <% @race.horses.each do |horse| %>
-    <li><%= horse.name %>:</li>
+    <li>
+      <% if horse.id == session[:horse_id] %>
+        <span class="badge"> You </span>
+      <% end %>
+      <%= horse.name %>: <%= horse.position %> / <%= @race.length %>
+    </li>
   <% end %>
 </ul>

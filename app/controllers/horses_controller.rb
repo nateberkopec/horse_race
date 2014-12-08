@@ -11,7 +11,8 @@ class HorsesController < ApplicationController
 
     respond_to do |format|
       if @horse.save
-        format.html { redirect_to race_url(@horse.race.id) }
+        session[:horse_id] = @horse.id
+        format.html { redirect_to @horse.race }
         format.json { render :show, status: :created, location: @horse }
       else
         format.html { render :new }
