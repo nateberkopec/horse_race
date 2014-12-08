@@ -2,9 +2,9 @@ require 'test_helper'
 
 class HorsesControllerTest < ActionController::TestCase
 
-  test "create should accept race code successfully" do
+  test "create" do
     assert_difference('Horse.count') do
-      post :create, { horse: { name: 'Seattle Slew', race_code: 'XKRF'} }
+      post :create, { horse: { name: 'Seattle Slew' } }
     end
     assert_response :found
   end

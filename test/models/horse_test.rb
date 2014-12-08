@@ -15,4 +15,12 @@ class HorseTest < ActiveSupport::TestCase
     refute @horse.valid?
   end
 
+  test 'creates a race if there isnt one' do
+    @horse = Horse.new(name: 'Assault')
+
+    @horse.save
+
+    assert @horse.race.persisted?
+  end
+
 end

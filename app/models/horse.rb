@@ -5,6 +5,8 @@ class Horse < ActiveRecord::Base
   validates :name, presence: true
   validate :no_shortcuts, if: proc { |h| h.position_changed? }
 
+  before_save :creates_race_if_none_exists
+
   def race_code=(code)
     self.race = Race.find_or_initialize_by code: code
   end
@@ -15,5 +17,9 @@ class Horse < ActiveRecord::Base
     unless (-1..1) === (position - position_was)
       errors.add(:position, 'cannot be increased by more than 1')
     end
+  end
+
+  def creates_race_if_none_exists
+    self.race ||= Race.create
   end
 end
